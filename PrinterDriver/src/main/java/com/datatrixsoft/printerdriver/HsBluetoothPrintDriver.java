@@ -778,7 +778,7 @@ public class HsBluetoothPrintDriver implements Contants {
     }
 
     public void printImage(Bitmap bitmap,int reqWidth) {
-        Bitmap newBm = com.datatrixsoft.bitmapimageprint.BitmapConvertUtil.decodeSampledBitmapFromBitmap(bitmap, reqWidth);
+        Bitmap newBm = BitmapConvertUtil.decodeSampledBitmapFromBitmap(bitmap, reqWidth);
         byte xL = (byte)(((newBm.getWidth() - 1) / 8 + 1) % 256);
         byte xH = (byte)(((newBm.getWidth() - 1) / 8 + 1) / 256);
         byte yL = (byte)(newBm.getHeight() % 256);
@@ -787,7 +787,7 @@ public class HsBluetoothPrintDriver implements Contants {
         Log.d("HsBluetoothPrintDriver", "xH = " + xH);
         Log.d("HsBluetoothPrintDriver", "yL = " + yL);
         Log.d("HsBluetoothPrintDriver", "yH = " + yH);
-        byte[] pixels = com.datatrixsoft.bitmapimageprint.BitmapConvertUtil.convert(newBm);
+        byte[] pixels = BitmapConvertUtil.convert(newBm);
         this.BT_Write(new byte[]{29, 118, 48, 0, xL, xH, yL, yH});
         this.BT_Write(pixels);
         this.BT_Write(new byte[]{10});

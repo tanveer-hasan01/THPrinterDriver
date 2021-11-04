@@ -6,6 +6,7 @@ package com.datatrixsoft.printerdriver;
 //
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -309,6 +310,7 @@ public class BitmapConvertUtil {
         return bitmap;
     }
 
+    @SuppressLint("Range")
     private static String getFilePath(Context context, Uri uri) {
         String filePath = null;
         if ("content".equalsIgnoreCase(uri.getScheme())) {
